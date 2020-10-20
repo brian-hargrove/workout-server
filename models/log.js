@@ -6,5 +6,3 @@ module.exports = function(sequelize, DataTypes){
         owner_id: DataTypes.INTEGER
     });
 };
-
-

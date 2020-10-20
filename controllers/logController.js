@@ -26,10 +26,10 @@ router.get('/', function(req, res){
 
 //? post for individula user
 router.post('/', function (req,res){
-    var owner_id = req.user.id;
     var description = req.body.description;
     var definition = req.body.definition;
     var result = req.body.result;
+    var owner_id = req.user.id;
 
     logModel
         .create({
@@ -40,9 +40,7 @@ router.post('/', function (req,res){
         })
         .then(
             function createSuccess(data){
-                res.json({
-                    logdata: logdata
-                });
+                res.json(data);
             },
             function createError(err){
                 res.send(500,err.message);

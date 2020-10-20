@@ -6,11 +6,11 @@ module.exports=function(req, res, next){
     if(req.method == 'OPTIONS'){
         next()
     }else {
-        var sessionToken = req.headers.authoriztaion;
+        var sessionToken = req.headers.authorization;
         console.log(sessionToken)
-        if(!sessionToken) return res.status(403).send ({authoriztaion: false, message: 'No Token provied.'});
+        if(!sessionToken) return res.status(403).send ({authorization: false, message: 'No Token provied.'});
         else{ 
-            jwt.verify(sessionToken, process.JWT_SECRET, (err, decoded)=>{
+            jwt.verify(sessionToken, process.env.JWT_SECRET, (err, decoded)=>{
                 if(decoded){
                     User.findOne({where: {id: decoded.id}}).then(user => {
                         req.user = user;
