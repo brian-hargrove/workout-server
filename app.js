@@ -13,10 +13,6 @@ app.use(express.json());
 app.use(require('./middleware/headers'));
 app.use('/api/user',user);
 
-// app.use('/api/test', function(req, res){
-//     res.send("This is data from the /api/test endpoint. It's from the server.");
-// });
-
 
 app.use(require('./middleware/validate-session'));
 app.use('/log',log);

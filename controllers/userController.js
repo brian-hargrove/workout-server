@@ -15,7 +15,7 @@ router.post('/register',function (req,res){
     }).then(
         function createSuccess(user){
             var token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {expiresIn: 60*60*24});
-
+            
             res.json({
                 user: user,
                 message: "Accout Created",
