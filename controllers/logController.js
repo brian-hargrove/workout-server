@@ -12,7 +12,7 @@ router.get('/', function(req, res){
 
     logModel
         .findAll({
-            where: { owner: userid}
+            where: { owner_id: userid}
         })
         .then(
             function findAllSuccess(data) {
@@ -78,7 +78,7 @@ router.delete('/:id', function(req,res){
             where: { id: data, owner_id: userid}
         }).then(
             function deleteLogSuccess(data){
-                res.sent("Log removed");
+                res.send("Log removed");
             },
             function deleteLogError(err){
                 res.send(500, err.message);
